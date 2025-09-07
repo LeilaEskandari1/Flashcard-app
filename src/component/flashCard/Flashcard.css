@@ -4,7 +4,20 @@
   perspective: 1000px;
   cursor: pointer;
   margin: 20px auto;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+
 }
+
+.flashcard.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+
+
 
 .flashcard .front,
 .flashcard .back {
@@ -19,7 +32,9 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   background: white;
-  transition: transform 0.6s;
+  transition: transform 0.5s;
+
+
 }
 
 .flashcard .front {

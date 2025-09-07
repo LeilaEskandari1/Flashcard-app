@@ -1,5 +1,21 @@
-# Getting Started with Create React App
 
+# Flashcard App
+
+A simple React-based flashcard app for learning and memorization.
+
+## 🚀 Features
+- Flip cards to reveal answers
+- Navigate through flashcards
+- Responsive design for mobile and desktop
+- Easy to customize with your own questions
+
+## 🛠️ Installation
+
+```bash
+git clone https://github.com/LeilaEskandari1/flashcard-app.git
+cd flashcard-app
+npm install
+npm start
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
