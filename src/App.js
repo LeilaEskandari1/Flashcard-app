@@ -1,20 +1,22 @@
 
 import './App.css';
 import Flashcard from './component/flashCard/Flashcard'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 function App() {
-  const flashcards = [
-  { question: "What is the capital of France?", answer: "Paris" },
-  { question: "What is 2 + 2?", answer: "4" },
-  { question: "Who painted the Mona Lisa?", answer: "Leonardo da Vinci" },
-];
+   const [flashCards,setFlashCards ]=useState([]);
+  useEffect(() => {
+  fetch('http://localhost:5000/flashcards')
+    .then(res => res.json())
+    .then(data => setFlashCards(data))
+    .catch(err => console.error(err));
+}, []);
 
 const [currentIndex, setCurrentIndex] = useState(0);
 const [flipped, setFlipped] = useState(false);   
 const [isTransitioning, setIsTransitioning] = useState(false); 
 const handleNext = () => {
-  if (currentIndex < flashcards.length - 1) {
+  if (currentIndex < flashCards.length - 1) {
     setFlipped(false); // Flip back to question side
       setIsTransitioning(true); // Hide card
 
@@ -43,8 +45,8 @@ const handlePrevious = () => {
  <h1>Flashcard App</h1>
 
   <Flashcard
-    question={flashcards[currentIndex].question}
-    answer={flashcards[currentIndex].answer}
+    question={flashCards[currentIndex]?.question}
+    answer={flashCards[currentIndex]?.answer}
     flipped={flipped}
     setFlipped={setFlipped}
      hidden={isTransitioning}
@@ -63,7 +65,7 @@ const handlePrevious = () => {
 
         <button
           onClick={handleNext}
-          disabled={currentIndex === flashcards.length - 1}
+          disabled={currentIndex === flashCards.length - 1}
         >
           Next
         </button>
